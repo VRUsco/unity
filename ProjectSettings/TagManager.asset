@@ -8,7 +8,7 @@ TagManager:
   - AutonomousVehicle
   - PeatonalBox
   - ControllerCar
-  - PlayerXD
+  - PlayerController
   layers:
   - Default
   - TransparentFX

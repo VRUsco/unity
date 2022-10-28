@@ -17,13 +17,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 camForward;
     private Vector3 camRight;
 
-    public NavMeshAgent navMeshAgent;
-
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<CharacterController>();
-        navMeshAgent = GetComponent<NavMeshAgent>(); 
 
     }
 
