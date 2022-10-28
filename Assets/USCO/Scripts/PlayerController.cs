@@ -1,16 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class PlayerController : MonoBehaviour
+{
+    Rigidbody rb;
+    Vector2 inputMovement;
+    Vector2 inputRotation;
+    Transform camara;
+    float sensibilidadMouse = 4;
+    float velCaminar = 10f;
+    float rotationXcamara;
+    void Start(){
+        rb = GetComponent<Rigidbody>();
+        camara = transform.GetChild(0);
+        rotationXcamara = camara.eulerAngles.x;
+    }
+
+    void Update(){
+        inputMovement.x = Input.GetAxis("Horizontal");
+        inputMovement.y = Input.GetAxis("Vertical");
+
+        inputRotation.x = Input.GetAxis("Mouse X") * sensibilidadMouse;
+        inputRotation.y = Input.GetAxis("Mouse Y") * sensibilidadMouse;
+    }
+
+    private void FixedUpdate(){
+        float vel = velCaminar;
+
+        rb.velocity = transform.forward * vel * inputMovement.y + transform.right * vel * inputMovement.x;
+
+        /* rotationXcamara -= inputRotation.y;
+        rotationXcamara = Mathf.Clamp(rotationXcamara, -50, 50); 
+        camara.localRotation = Quaternion.Euler(rotationXcamara, 0, 0);
+
+        transform.rotation *= Quaternion.Euler( 0, inputRotation.x, 0);
+         */
+    }
+}
+
+/* public class PlayerController : MonoBehaviour
 {
     private float horizontalMove;
     private float verticalMove;
     public CharacterController player;
     private Vector3 playerInput;
     public float _gravity = 9.8f;
-    public float _speed = 3.0f;
+    public float _speed = 1.0f;
 
     private Vector3 directionPlayer;
     public Camera mainCamera;
@@ -39,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
         
         player.transform.LookAt(player.transform.position + directionPlayer);
-
+        Debug.Log(player.velocity.magnitude);
         SetGravity();
         player.Move(directionPlayer * Time.deltaTime);
     }
@@ -62,3 +99,4 @@ public class PlayerController : MonoBehaviour
         directionPlayer.y = -_gravity * Time.deltaTime;
     }
 }
+ */
