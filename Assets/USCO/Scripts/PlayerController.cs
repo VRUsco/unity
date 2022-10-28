@@ -65,4 +65,3 @@ public class PlayerController : MonoBehaviour
         directionPlayer.y = -_gravity * Time.deltaTime;
     }
 }
-

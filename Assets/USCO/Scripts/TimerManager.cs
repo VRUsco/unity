@@ -18,8 +18,8 @@ public class TimerManager : MonoBehaviour
     {
         minutes = (int)(timeElapsed / 60f);
         seconds = (int)(timeElapsed - (60f * minutes));
-        miliseconds = (int)((timeElapsed - (int)timeElapsed) * 100f);
-        time = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, miliseconds);
+        //miliseconds = (int)((timeElapsed - (int)timeElapsed) * 100f);
+        time = string.Format("{0:00}:{1:00}", minutes, seconds);
         return time;
     }
 
