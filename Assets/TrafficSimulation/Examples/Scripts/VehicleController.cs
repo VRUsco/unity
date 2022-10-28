@@ -20,18 +20,4 @@ public class VehicleController : MonoBehaviour
         wheelDrive.Move(acc, steering, brake);
     }
 
-    private void OnTriggerEnter(Collider obj)
-    {
-        RedLightStatus luces = FindObjectOfType<RedLightStatus>();
-        SaveManager save = FindObjectOfType<SaveManager>();
-
-        Light pointLightGreen;
-
-        pointLightGreen = luces.transform.GetChild(1).GetComponent<Light>();
-
-        if (obj.tag=="PeatonalBox" && pointLightGreen.enabled == true)
-        {
-            save.IncreaseError();
-        }
-    }
 }

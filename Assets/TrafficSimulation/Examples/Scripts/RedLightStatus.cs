@@ -12,8 +12,8 @@ public class RedLightStatus : MonoBehaviour
     public int lightGroupId;  // Belong to traffic light 1 or 2?
     public Intersection intersection;
     
-    public Light pointLight;
-    public Light pointLightGreen;
+    private Light pointLight;
+    private Light pointLightGreen;
 
     void Start(){
         pointLight = this.transform.GetChild(0).GetComponent<Light>();
