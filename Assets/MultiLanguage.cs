@@ -7,6 +7,7 @@ public class MultiLanguage : MonoBehaviour
 {
     private void Start()
     {
+        PlayerPrefs.SetString("lang","Spanish");
         switch (Application.systemLanguage)
         {
             case SystemLanguage.English:
@@ -19,23 +20,9 @@ public class MultiLanguage : MonoBehaviour
     }
     void Update()
     {
-        //Debug.Log(PlayerPrefs.GetString("lang"));
-        if (LocalizationManager.Language != "")
-        {
-            LocalizationManager.Language = PlayerPrefs.GetString("lang");
-        }
-        else
-        {
-            switch (Application.systemLanguage)
-            {
-                case SystemLanguage.English:
-                    LocalizationManager.Language = "English";
-                    break;
-                case SystemLanguage.Spanish:
-                    LocalizationManager.Language = "Spanish";
-                    break;
-            }
-        }
+
+        LocalizationManager.Language = PlayerPrefs.GetString("lang");
+        
         
     }
 
