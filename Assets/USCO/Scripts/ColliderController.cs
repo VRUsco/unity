@@ -13,7 +13,6 @@ public class ColliderController : MonoBehaviour
         if (obj.tag == "PlayerController" && pointLightGreen.enabled == true)
         {
             save.IncreaseError();
-            Debug.Log("PUTO PASO PEATONAL");
         }
     }
 }

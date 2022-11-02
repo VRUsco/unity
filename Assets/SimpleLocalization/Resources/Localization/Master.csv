@@ -1,0 +1,11 @@
+key,Spanish,English
+[MenuPrincipal.Title],Panel Principal,Main panel
+[MenuPrincipal.ButtonGame],Nueva Sesion,New Session
+[Menu.Title],MENU,MENo
+[Menu.ButtomOption],Opciones,Options
+[UserForm.Title],POR FAVOR COMPLETE LA INFORMACIÓN DEL PARTICIPANTE,PLEASE COMPLETE PARTICIPANT INFORMATION
+[UserForm.Username],Nombre Usuario:,Username:
+[UserForm.Age],Edad:,Age:
+[UserForm.Gender],Genero:,Gender:
+[MenuOptions.Title],OPCIONES,OPTIONS
+[MenuOptions.Return],Regresar,Return

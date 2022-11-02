@@ -4,7 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/USCO/Scenes/MenuPrincipalScene.unity
+    guid: 18aeb0a31cd34eb49a1a94ab3db61fc1
+  - enabled: 1
+    path: Assets/USCO/Scenes/OptionsMenuScene.unity
+    guid: cd70b53b544e6b64eb70bee8eb3c6b52
+  - enabled: 1
+    path: Assets/USCO/Scenes/Mapa No.1.unity
+    guid: c1c1eea2aaf527c4bb28397999f8bde1
   m_configObjects:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 64da53edcdc76d645bb1ca4380299349, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 483cee09ce706ff4e97dc223d9b07576, type: 2}
