@@ -15,6 +15,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private float timeElapsed;
     public string time;
     private int minutes, seconds, miliseconds;
+    private string directionToSave = "Cll 0 con 0";
 
     void Start(){
         erroresUI.text = errores.ToString();
@@ -40,6 +41,7 @@ public class SaveManager : MonoBehaviour
 
         player.errores = errores;
         player.tiempo = time.ToString();
+        player.direction = directionToSave;
 
         string playerInfoJson = JsonUtility.ToJson(player);
         Debug.Log("Info a guardar: "+playerInfoJson);
@@ -52,12 +54,12 @@ public class SaveManager : MonoBehaviour
         var client = new MongoClient(settings);
         var database = client.GetDatabase("test"); */
 
-        Debug.Log("hola kbron");
     }
 
     public class PlayerInfo{
         public int errores;
         public string tiempo;
+        public string direction;
     }
 
     public void IncreaseError(){
@@ -69,6 +71,9 @@ public class SaveManager : MonoBehaviour
         erroresUI.text = errores.ToString();
     }
 
+    public void updateDirection(string direction){
+        directionToSave = direction;
+    }
     string getTime(float n){
         minutes = (int)(timeElapsed / 60f);
         seconds = (int)(timeElapsed - (60f * minutes));
@@ -76,39 +81,7 @@ public class SaveManager : MonoBehaviour
         time = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, miliseconds);
         return time;
     }
-/* 
-    IEnumerator Download(string id, System.Action<PlayerData> callback = null)
-{
-    using (UnityWebRequest request = UnityWebRequest.Get("mongodb+srv://RVadmin:<password>@oriespacial.xuwrhu4.mongodb.net/?retryWrites=true&w=majority"+"GET"))
-    {
-        yield return request.SendWebRequest();
-
-        if (request.isNetworkError || request.isHttpError)
-        {
-            Debug.Log(request.error);
-            if (callback != null)
-            {
-                callback.Invoke(null);
-            }
-        }
-        else
-        {
-            if (callback != null)
-            {
-                callback.Invoke(PlayerData.Parse(request.downloadHandler.text));
-            }
-        }
-    }
-} */
 
 }
 /* RVadmin
 RVadmin2022 */
-
-
-/* 
-
-var settings = MongoClientSettings.FromConnectionString("mongodb+srv://RVadmin:<password>@oriespacial.xuwrhu4.mongodb.net/?retryWrites=true&w=majority");
-var client = new MongoClient(settings);
-var database = client.GetDatabase("test");
- */
