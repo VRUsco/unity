@@ -20,10 +20,7 @@ public class MultiLanguage : MonoBehaviour
     }
     void Update()
     {
-
-        LocalizationManager.Language = PlayerPrefs.GetString("lang");
-        
-        
+        LocalizationManager.Language = PlayerPrefs.GetString("lang");   
     }
 
     public void Language(string language)
