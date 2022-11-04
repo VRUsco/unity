@@ -3,7 +3,6 @@ using TrafficSimulation;
 
 public class VehicleController : MonoBehaviour
 {
-
     WheelDrive wheelDrive;
 
     void Start()

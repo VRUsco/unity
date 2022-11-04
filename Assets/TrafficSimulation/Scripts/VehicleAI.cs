@@ -230,7 +230,7 @@ namespace TrafficSimulation {
             float minDist = 1000f;
 
             float initRay = (raysNumber / 2f) * raySpacing;
-            float hitDist =  -1f;
+            float hitDist =  1f;
             for(float a=-initRay; a<=initRay; a+=raySpacing){
                 CastRay(raycastAnchor.transform.position, a, this.transform.forward, raycastLength, out detectedObstacle, out hitDist);
 

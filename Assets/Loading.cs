@@ -10,7 +10,6 @@ public class Loading : MonoBehaviour
     {
         int nivelACargar = CargaNivel.siguienteNivel;
         StartCoroutine(IniciarCarga(nivelACargar));
-
     }
 
     IEnumerator IniciarCarga(int nivel)
