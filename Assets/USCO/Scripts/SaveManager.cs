@@ -47,12 +47,8 @@ public class SaveManager : MonoBehaviour
         Debug.Log("Info a guardar: "+playerInfoJson);
 
         //string path = Path.Combine(Application.persistentDataPath, "playerData.data");
-        string path = Path.Combine("oriespacial/playerInfo", "playerData.data");
+        string path = Path.Combine("playerInfo", "playerData.data");
         File.WriteAllText(path, playerInfoJson);
-
-        /* var settings = MongoClientSettings.FromConnectionString("mongodb+srv://RVadmin:<password>@oriespacial.xuwrhu4.mongodb.net/?retryWrites=true&w=majority");
-        var client = new MongoClient(settings);
-        var database = client.GetDatabase("test"); */
 
     }
 
