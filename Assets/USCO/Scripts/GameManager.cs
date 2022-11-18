@@ -8,38 +8,60 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     private bool isPaused;
     public static GameManager Instance { get; private set; }
-    
-    private void Awake(){
-        if(Instance != null && Instance != this ){
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
             Destroy(this);
-        }else{
+        }
+        else
+        {
             Instance = this;
         }
     }
-    
-    private void Update(){
-        if(Input.GetKeyDown(KeyCode.P)){
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
             UpdatePause();
             ShowPausePanel();
         }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (isPaused)
+            {
+                SceneManager.LoadScene("Inicio");
+            }
+        }
     }
 
-    public bool isGamePaused(){
+    public bool isGamePaused()
+    {
         return isPaused;
     }
 
-    private void UpdatePause(){
+    private void UpdatePause()
+    {
         isPaused = !isPaused;
-        if(isPaused){
+        if (isPaused)
+        {
             Time.timeScale = 0f;
-        }else{
+        }
+        else
+        {
             Time.timeScale = 1f;
         }
     }
-    private void ShowPausePanel(){
-        if(isPaused){
+    private void ShowPausePanel()
+    {
+        if (isPaused)
+        {
             pauseMenu.SetActive(true);
-        }else{
+        }
+        else
+        {
             pauseMenu.SetActive(false);
         }
     }
