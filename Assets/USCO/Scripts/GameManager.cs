@@ -71,37 +71,10 @@ public class GameManager : MonoBehaviour
     {
         CargaNivel.NivelCarga(Scene);
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
 }
-
-/* 
-private void OnDisable()
-        {
-            m_Enabled = false;
-
-            // Remove from global list.
-            var index = ArrayHelpers.IndexOfReference(s_AllActivePlayers, this, s_AllActivePlayersCount);
-            if (index != -1)
-                ArrayHelpers.EraseAtWithCapacity(s_AllActivePlayers, ref s_AllActivePlayersCount, index);
-
-            // Unhook from change notifications if we're the last player.
-            if (s_AllActivePlayersCount == 0 && s_UserChangeDelegate != null)
-                InputUser.onChange -= s_UserChangeDelegate;
-
-            StopListeningForUnpairedDeviceActivity();
-            StopListeningForDeviceChanges();
-
-            // Trigger leave event.
-            PlayerInputManager.instance?.NotifyPlayerLeft(this);
-
-            ////TODO: ideally, this shouldn't have to resolve at all and instead wait for someone to need the updated setup
-            // Avoid re-resolving bindings over and over while we disassemble
-            // the configuration.
-            using (InputActionRebindingExtensions.DeferBindingResolution())
-            {
-                DeactivateInput();
-                UnassignUserAndDevices();
-                UninitializeActions();
-            }
-
-            m_PlayerIndex = -1;
-        } */
