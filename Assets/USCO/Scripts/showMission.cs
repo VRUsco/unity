@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class showMission : MonoBehaviour
 {
+    public Mission mission;
     void Start()
     {
         Load();
@@ -25,8 +26,12 @@ public class showMission : MonoBehaviour
         string missionsJson = File.ReadAllText(path);
         Debug.Log(missionsJson);
 
-        object missions = JsonUtility.FromJson<Object>(missionsJson);
+        Mission missionLoaded = JsonUtility.FromJson<Mission>(missionsJson);
+/* 
+        mission.mssg = missionLoaded.mision;
 
-        Debug.Log(missions);
+
+        Debug.Log(missionLoaded); */
     }
+
 }
