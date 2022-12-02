@@ -13,6 +13,11 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private TMP_Text erroresUI;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private float timeElapsed;
+    [SerializeField] private GameObject endOfLevel;
+    
+
+    [SerializeField] private TMP_Text endOfLevelErrores;
+    [SerializeField] private TMP_Text endOfLevelTiempo;
     public string time;
     private int minutes, seconds, miliseconds;
     private string directionToSave = "Cll 0 con 0";
@@ -49,6 +54,10 @@ public class SaveManager : MonoBehaviour
         //string path = Path.Combine(Application.persistentDataPath, "playerData.data");
         string path = Path.Combine("playerInfo", "playerData.data");
         File.WriteAllText(path, playerInfoJson);
+
+        endOfLevelTiempo.text = time.ToString();
+        endOfLevelErrores.text = errores.ToString();
+        endOfLevel.SetActive(true);
 
     }
 

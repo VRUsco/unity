@@ -2,13 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using TMPro;
 
 public class showMission : MonoBehaviour
 {
-    public Mission mission;
+    public int nMission = 1;
+    [SerializeField] public TMP_Text mision; 
+
+    private string[] missions = { "la gasolinera Terpel, calle 2 #2.",
+                                 "la gasolinera Cafe, calle 2 #2.", 
+                                "a gasolinera Exito, calle 2 #2." };
+
+    private string[] directionMission = { "Cll2cr2", "Cll2cr2", "Cll2cr2" };
     void Start()
     {
-        Load();
+        mision.text = "Dirígete a "+missions[nMission];
     }
 
     // Update is called once per frame
@@ -17,21 +25,5 @@ public class showMission : MonoBehaviour
 
     }
 
-
-    public void Load()
-    {
-        string path = Path.Combine("playerInfo", "playerMissions.data");
-        Debug.Log(path);
-
-        string missionsJson = File.ReadAllText(path);
-        Debug.Log(missionsJson);
-
-        Mission missionLoaded = JsonUtility.FromJson<Mission>(missionsJson);
-/* 
-        mission.mssg = missionLoaded.mision;
-
-
-        Debug.Log(missionLoaded); */
-    }
 
 }
