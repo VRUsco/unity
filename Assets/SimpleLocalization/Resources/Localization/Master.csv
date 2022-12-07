@@ -3,9 +3,9 @@ key,Spanish,English
 [MenuPrincipal.ButtonGame],Nueva Sesion,New Session
 [Menu.Title],MENU,MENo
 [Menu.ButtomOption],Opciones,Options
-[UserForm.Title],POR FAVOR COMPLETE LA INFORMACIÓN DEL PARTICIPANTE,PLEASE COMPLETE PARTICIPANT INFORMATION
-[UserForm.Username],Nombre Usuario:,Username:
-[UserForm.Age],Edad:,Age:
-[UserForm.Gender],Genero:,Gender:
-[MenuOptions.Title],OPCIONES,OPTIONS
-[MenuOptions.Return],Regresar,Return
+[Map.TitleBigMall],Exito,Mall
+[Map.TitleTheater],TEATRO PINGOANZA,Theater lucius
+[Map.TitleHospital],San francisco,San Gerardo
+[Map.TitleSamllMall],YEP,small Mall
+[Map.Titlebibliotecary],BIBLIOTECA,library
+[Map.TitleParking],PARQUEADERO,PARKING
