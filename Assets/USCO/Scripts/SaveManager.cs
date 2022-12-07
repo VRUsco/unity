@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
-using System.Text;
 using System.IO;
-using UnityEngine.Networking;
+using System;
 
 public class SaveManager : MonoBehaviour
 {
     public int errores = 0;
+    private int TiempoEnIrseElMensaje = 3;
     [SerializeField] private TMP_Text erroresUI;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private float timeElapsed;
     [SerializeField] private GameObject endOfLevel;
-    
+
 
     [SerializeField] private TMP_Text endOfLevelErrores;
     [SerializeField] private TMP_Text endOfLevelTiempo;
@@ -22,11 +19,13 @@ public class SaveManager : MonoBehaviour
     private int minutes, seconds, miliseconds;
     private string directionToSave = "Cll 0 con 0";
 
-    void Start(){
-        erroresUI.text = errores.ToString();
+    void Start()
+    {
+        
     }
 
-    void Update(){
+    void Update()
+    {
 
         timeElapsed += Time.deltaTime;
 
@@ -34,14 +33,17 @@ public class SaveManager : MonoBehaviour
 
         if (minutes > 9)
         {
-            timerText.color = new Color(255,0,0,255);
+            timerText.color = new Color(255, 0, 0, 255);
         }
+
+
 
         //Invoke("SaveApp", (10.0f * Time.deltaTime));
     }
 
     [ContextMenu("GUARDAR CHAMO")]
-    public void SaveApp(){
+    public void SaveApp()
+    {
         PlayerInfo player = new PlayerInfo();
 
         player.errores = errores;
@@ -49,7 +51,7 @@ public class SaveManager : MonoBehaviour
         player.direction = directionToSave;
 
         string playerInfoJson = JsonUtility.ToJson(player);
-        Debug.Log("Info a guardar: "+playerInfoJson);
+        Debug.Log("Info a guardar: " + playerInfoJson);
 
         //string path = Path.Combine(Application.persistentDataPath, "playerData.data");
         string path = Path.Combine("playerInfo", "playerData.data");
@@ -61,32 +63,43 @@ public class SaveManager : MonoBehaviour
 
     }
 
-    public class PlayerInfo{
+    public class PlayerInfo
+    {
         public int errores;
         public string tiempo;
         public string direction;
     }
 
-    public void IncreaseError(string whyerror = "pta madre")
+    public void IncreaseError(string whyerror)
     {
         errores++;
+
         erroresUI.text = whyerror;
+        Invoke("Cono", (200 * Time.deltaTime));
+
     }
-    private void DecreaseError(){
+    public void Cono(){
+        erroresUI.text = "";
+    }
+    private void DecreaseError()
+    {
         errores--;
         erroresUI.text = errores.ToString();
     }
 
-    public void updateDirection(string direction){
+    public void updateDirection(string direction)
+    {
         directionToSave = direction;
     }
-    string getTime(float n){
+    string getTime(float n)
+    {
         minutes = (int)(timeElapsed / 60f);
         seconds = (int)(timeElapsed - (60f * minutes));
         miliseconds = (int)((timeElapsed - (int)timeElapsed) * 100f);
         time = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, miliseconds);
         return time;
     }
+
 
 }
 /* RVadmin
