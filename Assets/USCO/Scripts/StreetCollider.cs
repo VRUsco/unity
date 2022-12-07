@@ -10,8 +10,7 @@ public class StreetCollider : MonoBehaviour
 
         if (obj.tag == "PlayerController")
         {
-            save.IncreaseError();
-            Debug.Log("Vuelva a la acera");
+            save.IncreaseError("No pises la calle broki, cuidado te atropellan.");
         }
     }
 }

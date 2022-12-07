@@ -67,9 +67,10 @@ public class SaveManager : MonoBehaviour
         public string direction;
     }
 
-    public void IncreaseError(){
+    public void IncreaseError(string whyerror = "pta madre")
+    {
         errores++;
-        erroresUI.text = errores.ToString();
+        erroresUI.text = whyerror;
     }
     private void DecreaseError(){
         errores--;

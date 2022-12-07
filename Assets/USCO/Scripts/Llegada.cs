@@ -15,6 +15,7 @@ public class Llegada : MonoBehaviour
     {
         interfacePlayer.SetActive(false);
         GameManager.Instance.UpdatePause();
+        GameManager.Instance.isEnd = true;
         Debug.Log("FIN DEL NIVEl");
         save.SaveApp();
         

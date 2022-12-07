@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject interfacePlayer;
-    private bool isPaused;
+    public bool isPaused;
+    public bool isEnd = false;
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -24,16 +25,21 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (!isEnd)
         {
-            UpdatePause();
-            ShowPausePanel();
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                UpdatePause();
+                ShowPausePanel();
+            }
         }
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (isPaused)
             {
-                SceneManager.LoadScene("Inicio");
+                /* SceneManager.LoadScene("Inicio"); */
+                Application.Quit();
             }
         }
     }
@@ -45,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdatePause()
     {
+
         isPaused = !isPaused;
         if (isPaused)
         {
@@ -72,6 +79,8 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(int Scene)
     {
+        isPaused = false;
+        isEnd = false;
         CargaNivel.NivelCarga(Scene);
     }
 
