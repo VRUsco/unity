@@ -76,7 +76,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void ChangeScene(int Scene)
     {
         isPaused = false;

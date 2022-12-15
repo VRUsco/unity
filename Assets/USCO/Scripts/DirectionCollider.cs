@@ -5,8 +5,10 @@ using TMPro;
 
 public class DirectionCollider : MonoBehaviour
 {
-    public string direction;
-    [SerializeField] private TMP_Text directionUI;
+    public string Street;
+    public string Career;
+    [SerializeField] private TMP_Text StreetUI;
+    [SerializeField] private TMP_Text CareerUI;
 
     private void OnTriggerEnter(Collider obj)
     {
@@ -14,8 +16,9 @@ public class DirectionCollider : MonoBehaviour
 
         if (obj.tag == "PlayerController")
         {
-            directionUI.text = "Estás en: \n"+direction;
-            save.updateDirection(direction);
+            StreetUI.text = Street;
+            CareerUI.text = Career;
+            //save.updateDirection(direction);
         }
     }
 }

@@ -18,12 +18,4 @@ public class showMission : MonoBehaviour
     {
         mision.text = "Dirígete a "+missions[nMission];
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-
 }
