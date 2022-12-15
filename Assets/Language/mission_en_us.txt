@@ -1,0 +1,17 @@
+[MenuPrincipal.Title]=Main panel
+[MenuPrincipal.ButtonGame]=New Session
+[Menu.Title]=MENo
+[Menu.ButtomOption]=Options
+[Menu.ButtomOption.Spanish]=Spanish
+[Menu.ButtomOption.English]=English
+[Map.TitleBigMall]=Mall
+[Map.TitleTheater]=Theater lucius
+[Map.TitleHospital]=San Gerardo
+[Map.TitleSamllMall]=small Mall
+[Map.Titlebibliotecary]=library
+[Map.TitleParking]=PARKING
+[Map.TitleGasStation]=gas station
+[Map.UiMision1]=Mission: Go to the hospital, calle 4 #5.
+[Map.UiError]=Errors:
+[Map.UiDirectionStreet]=Street
+[Map.UiDirectionCareer]=Career
