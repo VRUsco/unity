@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void ChangeScene(int Scene)
     {
         CargaNivel.NivelCarga(Scene);
