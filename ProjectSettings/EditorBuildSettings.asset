@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/USCO/Scenes/Inicio.unity
-    guid: ed64f27ee7ed84c4aaed8c4fc05f2104
+    path: Assets/USCO/Scenes/HomeVR.unity
+    guid: 78eb96d4a4c753c4193f0c759536d063
   - enabled: 1
     path: Assets/USCO/Scenes/MenuPrincipalScene.unity
     guid: 18aeb0a31cd34eb49a1a94ab3db61fc1

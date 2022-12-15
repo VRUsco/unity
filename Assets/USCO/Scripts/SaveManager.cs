@@ -2,9 +2,14 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using System;
+using System.Net.Http;
+using System.Text;
+using Newtonsoft.Json;
+
 
 public class SaveManager : MonoBehaviour
 {
+    public string usuario = "Pedro Picapiedra";
     public int errores = 0;
     private int TiempoEnIrseElMensaje = 3;
     [SerializeField] private TMP_Text erroresUI;
@@ -21,7 +26,7 @@ public class SaveManager : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -46,9 +51,11 @@ public class SaveManager : MonoBehaviour
     {
         PlayerInfo player = new PlayerInfo();
 
-        player.errores = errores;
+        player.usuario = usuario;
+        player.errores = errores.ToString();
         player.tiempo = time.ToString();
         player.direction = directionToSave;
+        player.nivel = "1"; // TODO: make it responsive xD
 
         string playerInfoJson = JsonUtility.ToJson(player);
         Debug.Log("Info a guardar: " + playerInfoJson);
@@ -56,6 +63,11 @@ public class SaveManager : MonoBehaviour
         //string path = Path.Combine(Application.persistentDataPath, "playerData.data");
         string path = Path.Combine("playerInfo", "playerData.data");
         File.WriteAllText(path, playerInfoJson);
+
+        var httpClient = new HttpClient();
+        var url = "http://localhost:5000/app";
+        var data = playerInfoJson;
+        var result = httpClient.PostAsync(url, AsJson(data));
 
         endOfLevelTiempo.text = time.ToString();
         endOfLevelErrores.text = errores.ToString();
@@ -65,9 +77,11 @@ public class SaveManager : MonoBehaviour
 
     public class PlayerInfo
     {
-        public int errores;
+        public string usuario;
+        public string errores;
         public string tiempo;
         public string direction;
+        public string nivel;
     }
 
     public void IncreaseError(string whyerror)
@@ -78,7 +92,8 @@ public class SaveManager : MonoBehaviour
         Invoke("Cono", (200 * Time.deltaTime));
 
     }
-    public void Cono(){
+    public void Cono()
+    {
         erroresUI.text = "";
     }
     private void DecreaseError()
@@ -98,6 +113,11 @@ public class SaveManager : MonoBehaviour
         miliseconds = (int)((timeElapsed - (int)timeElapsed) * 100f);
         time = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, miliseconds);
         return time;
+    }
+
+    StringContent AsJson(object o)
+    {
+        return new StringContent(JsonConvert.SerializeObject(o), Encoding.UTF8, "application/json");
     }
 
 
