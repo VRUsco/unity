@@ -9,17 +9,17 @@ app = Flask(__name__)
 CORS(app)
 
 users = []
-engine = create_engine('postgresql://pruebas:pruebas@localhost:5434/pruebas')
+engine = create_engine('postgresql://pruebas:pruebas@localhost:5434/oriespacial')
 
 @app.route("/puntaje", methods=["POST"])
 def starting_url():
     json_data = request.json
     user = json_data["usuario"]
-    score = json_data["score"]
-    data = {"usuario":user,"score":score}
+    errores = json_data["errores"]
+    data = {"usuario":user,"errores":errores}
    
-    sql = text('insert into resultados (usuario, puntaje) values ('+str(user)+','+str(score)+')')
-    result = engine.execute(sql)
+    sql = text('insert into resultados (usuario, errores) values ('+str(user)+','+str(errores)+')')
+    engine.execute(sql)
     users.append(data)
     return {"data":data}
 

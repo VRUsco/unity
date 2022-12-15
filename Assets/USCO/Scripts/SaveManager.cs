@@ -53,9 +53,10 @@ public class SaveManager : MonoBehaviour
 
         player.usuario = usuario;
         player.errores = errores.ToString();
-        player.tiempo = time.ToString();
+        /* player.tiempo = time.ToString();
         player.direction = directionToSave;
-        player.nivel = "1"; // TODO: make it responsive xD
+        player.nivel = "1"; // TODO: make it responsive xD */
+
 
         string playerInfoJson = JsonUtility.ToJson(player);
         Debug.Log("Info a guardar: " + playerInfoJson);
@@ -65,9 +66,12 @@ public class SaveManager : MonoBehaviour
         File.WriteAllText(path, playerInfoJson);
 
         var httpClient = new HttpClient();
-        var url = "http://localhost:5000/app";
-        var data = playerInfoJson;
-        var result = httpClient.PostAsync(url, AsJson(data));
+
+        var json = JsonConvert.SerializeObject(player);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+
+        var url = "http://localhost:5000/puntaje";
+        httpClient.PostAsync(url, data);
 
         endOfLevelTiempo.text = time.ToString();
         endOfLevelErrores.text = errores.ToString();
