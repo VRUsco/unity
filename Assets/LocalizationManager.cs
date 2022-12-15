@@ -1,15 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Text;
-using Newtonsoft.Json;
+
 
 
 public class LocalizationManager : MonoBehaviour
@@ -25,9 +18,9 @@ public class LocalizationManager : MonoBehaviour
         FileRead(language);
     }
 
-    void Update()
+    public static void ChangeLanguage()
     {
-
+        myData.Clear();
     }
 
     public static void FileRead(string language)

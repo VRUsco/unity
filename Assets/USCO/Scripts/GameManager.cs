@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject interfacePlayer;
+    [SerializeField] private TMP_Dropdown Dropdown; // wire this in Inspector
+
     public bool isPaused;
     public bool isEnd = false;
     public static GameManager Instance { get; private set; }
@@ -14,13 +18,9 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (Instance != null && Instance != this)
-        {
             Destroy(this);
-        }
         else
-        {
             Instance = this;
-        }
     }
 
     private void Update()
@@ -37,10 +37,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (isPaused)
-            {
-                /* SceneManager.LoadScene("Inicio"); */
                 Application.Quit();
-            }
         }
     }
 
@@ -54,13 +51,9 @@ public class GameManager : MonoBehaviour
 
         isPaused = !isPaused;
         if (isPaused)
-        {
             Time.timeScale = 0f;
-        }
         else
-        {
             Time.timeScale = 1f;
-        }
     }
     private void ShowPausePanel()
     {
@@ -88,4 +81,9 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void OnMyButtonChange(string text)
+    {
+        LocalizationManager.ChangeLanguage();
+        LocalizationManager.FileRead(text);
+    }
 }
