@@ -10,6 +10,11 @@ public class DirectionCollider : MonoBehaviour
     [SerializeField] private TMP_Text StreetUI;
     [SerializeField] private TMP_Text CareerUI;
 
+    void Start()
+    {
+        StreetUI = GetComponent<TMP_Text>();
+        StreetUI.text = "puta";
+    }
     private void OnTriggerEnter(Collider obj)
     {
         SaveManager save = FindObjectOfType<SaveManager>();
@@ -17,7 +22,7 @@ public class DirectionCollider : MonoBehaviour
         if (obj.tag == "PlayerController")
         {
             StreetUI.text = Street;
-            CareerUI.text = Career;
+            CareerUI.text = "#"+Career;
             //save.updateDirection(direction);
         }
     }

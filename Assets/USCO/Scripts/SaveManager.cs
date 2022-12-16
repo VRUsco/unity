@@ -51,10 +51,10 @@ public class SaveManager : MonoBehaviour
     {
         PlayerInfo player = new PlayerInfo();
 
-        player.usuario = usuario;
+        /* player.usuario = usuario; */
         player.errores = errores.ToString();
-        /* player.tiempo = time.ToString();
-        player.direction = directionToSave;
+        player.tiempo = time.ToString();
+        /*player.direction = directionToSave;
         player.nivel = "1"; // TODO: make it responsive xD */
 
 
