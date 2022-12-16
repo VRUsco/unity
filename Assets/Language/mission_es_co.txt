@@ -4,6 +4,9 @@
 [MenuButtomOption]=Opciones
 [MenuButtomOption.Spanish]=Español
 [MenuButtomOption.English]=Ingles
+[MenuButtomOption.nivel1]=nivel 1
+[MenuButtomOption.nivel2]=nivel 2
+[MenuButtomOption.nivel3]=nivel 3
 [MapTitleBigMall]=Exito
 [MapTitleTheater]=TEATRO PINGOANZA
 [MapTitleHospital]=San francisco

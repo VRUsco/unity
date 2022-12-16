@@ -8,7 +8,7 @@ public class LocalizationTextUI : MonoBehaviour
 {
     public string LocalizationKey;
 
-    public void Start()
+    void Update()
     {
         Localize();
     }
