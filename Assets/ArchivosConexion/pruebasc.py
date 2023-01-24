@@ -14,7 +14,14 @@ engine = create_engine('postgresql://pruebas:pruebas@localhost:5434/oriespacial'
 @app.route("/puntaje", methods=["POST"])
 def starting_url():
     json_data = request.json
-    user = json_data["usuario"]
+    
+    def nombre():
+        if json_data["usuario"] == "None":
+            return json_data["usuario"]
+        else:
+            return 'Default'
+    
+    user = nombre()
     errores = json_data["errores"]
     data = {"usuario":user,"errores":errores}
    
