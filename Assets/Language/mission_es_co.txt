@@ -18,7 +18,7 @@
 [MapUiErrorCrosswalk]=No pases la cebra cuando el semáforo está en verde para los carros
 [MapUiDirectionStreet]=Calle
 [MapUiDirectionCareer]=Carrera
-[MapUiMision11]=Meta: ve al hospital, calle 4 Carrera 3.
+[MapUiMision11]=Empezando en la entrada del Teatro Pigoanza(Carrera 2), sigue alguna de las dos rutas alternas para llegar al almacén Éxito(Carrera).
 [MapUiMision12]=Meta: Ve al hospital, Calle 3 Carrera 2.
 [MapUiMision13]=Meta: Ve al hospital, Calle 2 Carrera 3.
 [MapUiMision14]=Meta: Ve al hospital, Calle 4 Carrera 6.
