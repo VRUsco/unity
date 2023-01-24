@@ -10,7 +10,7 @@ public class ColliderController : MonoBehaviour
 
         if (obj.tag == "PlayerController" && pointLightGreen.enabled == true)
         {
-            save.IncreaseError("No pases la cebra cuando el semáforo está en verde para los carros bro");
+            save.IncreaseError(LocalizationManager.Localize("[MapUiErrorCrosswalk]"));
         }
     }
 }
