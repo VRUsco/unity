@@ -11,6 +11,6 @@ public class showMission : MonoBehaviour
 
     void Start()
     {
-       mision.text = LocalizationManager.Localize("[MapUiMision"+Mission+"]");
+       //mision.text = LocalizationManager.Localize("[MapUiMision"+Mission+"]");
     }
 }

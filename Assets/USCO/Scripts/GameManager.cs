@@ -80,10 +80,4 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void OnMyButtonChange(string text)
-    {
-        LocalizationManager.ChangeLanguage();
-        LocalizationManager.FileRead(text);
-    }
 }

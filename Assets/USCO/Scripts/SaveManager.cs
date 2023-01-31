@@ -5,7 +5,12 @@ using System;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
-
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 public class SaveManager : MonoBehaviour
 {
@@ -47,11 +52,11 @@ public class SaveManager : MonoBehaviour
     }
 
     [ContextMenu("GUARDAR CHAMO")]
-    public void SaveApp()
+    public void SaveAppAsync()
     {
         PlayerInfo player = new PlayerInfo();
 
-        /* player.usuario = usuario; */
+        player.usuario = usuario;
         player.errores = errores.ToString();
         player.tiempo = time.ToString();
         /*player.direction = directionToSave;
@@ -70,13 +75,74 @@ public class SaveManager : MonoBehaviour
         var json = JsonConvert.SerializeObject(player);
         var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-        var url = "http://localhost:5000/puntaje";
+        var url = "http://localhost:5000/usuario";
         httpClient.PostAsync(url, data);
+
+        //listaUno();
+        lista();
 
         endOfLevelTiempo.text = time.ToString();
         endOfLevelErrores.text = errores.ToString();
         endOfLevel.SetActive(true);
 
+       
+
+        //HttpResponseMessage response = await client.GetAsync("http://localhost:5000/list");
+        //response.EnsureSuccessStatusCode();
+        //var responseBody = await response.Content.ReadAsStringAsync();
+        //var result = JsonConvert.DeserializeObject<List<listado>>(responseBody);
+        //Debug.Log("hola");
+
+        /*HttpResponseMessage resulto = await client.GetStringAsync("http://localhost:5000/list");
+        var dato = await resulto.Contains.
+        //listado result = JsonConvert.DeserializeObject<listado>(resulto);
+        Debug.Log(result);*/
+    }
+
+    public async Task lista()
+    {
+        var url2 = "http://localhost:5000/list";
+        //var url2 = "https://jsonplaceholder.typicode.com/todos";
+        HttpClient client = new HttpClient();
+        var json2 = await client.GetStringAsync(url2);
+        json2 = json2.Replace("\\","");
+        json2 = json2.Replace("\"[", "[");
+        json2 = json2.Replace("]\"", "]");
+        var myDetails = JsonConvert.DeserializeObject<List<listado>>(json2);
+        foreach (var item in myDetails)
+        {
+            Debug.Log(item.id);
+            Debug.Log(item.usuario);
+            Debug.Log(item.puntaje);
+            Debug.Log("");
+        }
+
+    //https://jsonplaceholder.typicode.com/todos
+    }
+
+    public async Task listaUno()
+    {
+        var url2 = "http://localhost:5000/list/1";
+        //var url2 = "https://jsonplaceholder.typicode.com/todos";
+        HttpClient client = new HttpClient();
+        var json2 = await client.GetStringAsync(url2);
+        json2 = json2.Replace("\\", "");
+        json2 = json2.Replace("\"[", "");
+        json2 = json2.Replace("]\"", "");
+        var item = JsonConvert.DeserializeObject<listado>(json2);
+        Debug.Log(item.id);
+            Debug.Log(item.usuario);
+            Debug.Log(item.puntaje);
+            Debug.Log("");
+
+        //https://jsonplaceholder.typicode.com/todos
+    }
+
+    public class listado
+    {
+        public int id { get; set; }
+        public string usuario { get; set; }
+        public string puntaje { get; set; }
     }
 
     public class PlayerInfo
