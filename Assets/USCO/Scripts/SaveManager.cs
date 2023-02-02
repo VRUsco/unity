@@ -39,7 +39,7 @@ public class SaveManager : MonoBehaviour
     [ContextMenu("GUARDAR CHAMO")]
     public void SaveAppAsync()
     {
-        PlayerInfo player = new PlayerInfo();
+        ResultadoInfo player = new ResultadoInfo();
 
         player.usuario = usuario;
         player.errores = errores.ToString();
