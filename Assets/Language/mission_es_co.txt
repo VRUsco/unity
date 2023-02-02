@@ -7,6 +7,13 @@
 [MenuSettingLenguage]=Idioma
 [MenuSettingBack]=Regresar
 [MenuNewGameButtonSearch]=Buscar
+[MenuNewGameButton]=Crear Prueba
+[MenuNewGameTextAssistant]=Auxiliar
+[MenuNewGameTextLevel]=Nivel
+[MenuNewGameTextGroup]=Grupo
+[MenuNewGameTableName]=Nombre
+[MenuNewGameTableLastName]=Apellido
+[MenuNewGameTableGender]=Genero
 [MapTitleBigMall]=Exito
 [MapTitleTheater]=TEATRO PINGOANZA
 [MapTitleHospital]=San francisco

@@ -7,6 +7,13 @@
 [MenuSettingLenguage]=Lenguage
 [MenuSettingBack]=Back
 [MenuNewGameButtonSearch]=Search
+[MenuNewGameButton]=Create Test
+[MenuNewGameTextAssistant]=Assistant
+[MenuNewGameTextLevel]=Level
+[MenuNewGameTextGroup]=Group
+[MenuNewGameTableName]=Name
+[MenuNewGameTableLastName]=Last Name
+[MenuNewGameTableGender]=Gender
 [MapTitleBigMall]=Mall
 [MapTitleTheater]=Theater lucius
 [MapTitleHospital]=San Gerardo

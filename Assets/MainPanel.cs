@@ -13,6 +13,13 @@ public class MainPanel : MonoBehaviour
     [SerializeField] private GameObject New_Test_Panel;
     public TMPro.TMP_Dropdown AuxiliarDrop;
     public TMPro.TMP_Dropdown LevelsDrop;
+    public TMPro.TMP_Dropdown GroupsDrop;
+    private List<auxiliar> auxiliares;
+    private List<level> levels;
+    private List<grupo> groups;
+    private int aux;
+    private int nivel;
+    private int group;
 
     private void Start()
     {
@@ -41,6 +48,37 @@ public class MainPanel : MonoBehaviour
         }
     }
 
+    public void saveTest()
+    {
+
+        foreach (var i in auxiliares)
+        {
+            if (i.nombre == AuxiliarDrop.captionText.text)
+            {
+                aux = i.id;
+            }
+        }
+
+        foreach (var i in levels)
+        {
+            if (i.nombre == LevelsDrop.captionText.text)
+            {
+                nivel = i.id;
+            }
+        }
+
+        foreach (var i in groups)
+        {
+            if (i.nombre == GroupsDrop.captionText.text)
+            {
+                group = i.id;
+            }
+        }
+        FillTable.SaveNewTest(aux, nivel, group);
+        GameManager.ChangeScene(LevelsDrop.captionText.text);
+
+    }
+
     private async Task SearchAsync()
     {
         var url = "http://localhost:5000/auxiliares";
@@ -49,7 +87,7 @@ public class MainPanel : MonoBehaviour
         json = json.Replace("\\", "");
         json = json.Replace("\"[", "[");
         json = json.Replace("]\"", "]");
-        var auxiliares = JsonConvert.DeserializeObject<List<auxiliar>>(json);
+        auxiliares = JsonConvert.DeserializeObject<List<auxiliar>>(json);
         foreach (var item in auxiliares)
         {
             TMPro.TMP_Dropdown.OptionData m_NewData = new TMPro.TMP_Dropdown.OptionData();
@@ -62,7 +100,7 @@ public class MainPanel : MonoBehaviour
         json2 = json2.Replace("\\", "");
         json2 = json2.Replace("\"[", "[");
         json2 = json2.Replace("]\"", "]");
-        var levels = JsonConvert.DeserializeObject<List<level>>(json2);
+        levels = JsonConvert.DeserializeObject<List<level>>(json2);
 
         foreach (var item in levels)
         {
@@ -70,16 +108,35 @@ public class MainPanel : MonoBehaviour
             m_NewData.text = item.nombre.ToString();
             LevelsDrop.options.Add(m_NewData);
         }
+
+        var url3 = "http://localhost:5000/gruposUnity";
+        var json3 = await client.GetStringAsync(url3);
+        json3 = json3.Replace("\\", "");
+        json3 = json3.Replace("\"[", "[");
+        json3 = json3.Replace("]\"", "]");
+        groups = JsonConvert.DeserializeObject<List<grupo>>(json3);
+
+        foreach (var item in groups)
+        {
+            TMPro.TMP_Dropdown.OptionData m_NewData = new TMPro.TMP_Dropdown.OptionData();
+            m_NewData.text = item.nombre.ToString();
+            GroupsDrop.options.Add(m_NewData);
+        }
     }
     public class auxiliar
     {
-        public int identificacion { get; set; }
+        public int id { get; set; }
         public string nombre { get; set; }
     }
-
     public class level
     {
         public int id { get; set; }
         public string nombre { get; set; }
+    }
+    public class grupo
+    {
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string descripcion { get; set; }
     }
 }

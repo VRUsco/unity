@@ -11,8 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject interfacePlayer;
     [SerializeField] private TMP_Dropdown Dropdown; // wire this in Inspector
 
-    public bool isPaused;
-    public bool isEnd = false;
+    public static bool isPaused;
+    public static bool isEnd = false;
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (isPaused)
-                Application.Quit();
+                ChangeScene("Home");
         }
     }
 
@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ChangeScene(int Scene)
+    public static void ChangeScene(string Scene)
     {
         isPaused = false;
         isEnd = false;

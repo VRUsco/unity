@@ -17,6 +17,7 @@ public class DropdownLanguage : MonoBehaviour
         {
             var culture = System.Globalization.CultureInfo.CurrentCulture;
             string language = culture.ToString().ToLower().Replace("-", "_");
+            Debug.Log(language);
             LocalizationManager.FileRead(language);
         }
         else { OnMyButtonChange(Drop.captionText.text); }
