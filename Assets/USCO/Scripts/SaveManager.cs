@@ -60,18 +60,6 @@ public class SaveManager : MonoBehaviour
         player.fecha_hora_fin = DateTime.Now;
         player.tiempo_ejecucion = time;
 
-
-        /*player.direction = directionToSave;
-        player.nivel = "1"; // TODO: make it responsive xD */
-
-
-        //string playerInfoJson = JsonUtility.ToJson(player);
-        //Debug.Log("Info a guardar: " + playerInfoJson);
-
-        ////string path = Path.Combine(Application.persistentDataPath, "playerData.data");
-        //string path = Path.Combine("playerInfo", "playerData.data");
-        //File.WriteAllText(path, playerInfoJson);
-
         var httpClient = new HttpClient();
 
         var json = JsonConvert.SerializeObject(player);
@@ -94,7 +82,7 @@ public class SaveManager : MonoBehaviour
 
     public async Task IdPruebaAsync()
     {
-        var url2 = "http://localhost:5000/pruebaId:\'" + clave + "\'";
+        var url2 = "http://localhost:5000/pruebaId:\'"+clave+"\'";
         HttpClient client = new HttpClient();
         var json = await client.GetStringAsync(url2);
         json = json.Replace("[", "");
@@ -117,9 +105,9 @@ public class SaveManager : MonoBehaviour
         public int id;
     }
 
-    public void IncreaseError(string whyerror, DateTime fecha_horaLlegada, int idTipoError)
+    public void IncreaseError(string whyerror, DateTime fecha_horaLlegada)
     {
-        PostError(fecha_horaLlegada, idTipoError);
+        PostError(fecha_horaLlegada);
         erroresUI.text = whyerror;
         Invoke("Cono", (200 * Time.deltaTime));
 
@@ -130,11 +118,11 @@ public class SaveManager : MonoBehaviour
         erroresUI.text = "";
     }
 
-    public void PostError( DateTime fecha_hora, int idTipoError)
+    public void PostError( DateTime fecha_hora)
     {
         ErrorInfo Error = new ErrorInfo();
         Error.prueba = idPrueba;
-        Error.tipo_error = idTipoError;
+        Error.tipo_error = idPruebaError;
         Error.fecha_hora = fecha_hora;
 
         var httpClient = new HttpClient();
@@ -151,17 +139,17 @@ public class SaveManager : MonoBehaviour
         public DateTime fecha_hora;
     }
 
-    //public async Task IdTipoErrorAsync(string tipoError)//funcionando
-    //{
-    //    var url2 = "http://localhost:5000/error:\'"+tipoError+"\'";
-    //    HttpClient client = new HttpClient();
-    //    var json = await client.GetStringAsync(url2);
-    //    json = json.Replace("[", "");
-    //    json = json.Replace("]", "");
-    //    TipoErrorIdLegada = JsonConvert.DeserializeObject<TipoErrorId>(json);
-    //    idPruebaError = TipoErrorIdLegada.id;
-    //    Debug.Log(idPruebaError);
-    //}
+    public async Task IdTipoErrorAsync(string tipoError)//funcionando
+    {
+        var url2 = "http://localhost:5000/error:\'"+tipoError+"\'";
+        HttpClient client = new HttpClient();
+        var json = await client.GetStringAsync(url2);
+        json = json.Replace("[", "");
+        json = json.Replace("]", "");
+        TipoErrorIdLegada = JsonConvert.DeserializeObject<TipoErrorId>(json);
+        idPruebaError = TipoErrorIdLegada.id;
+        Debug.Log(idPruebaError);
+    }
 
     public class TipoErrorId
     {
