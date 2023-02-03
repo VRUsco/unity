@@ -7,15 +7,11 @@ using StarterAssets;
 public class DialogueScript : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;
+    public TextMeshProUGUI TextContinue;
     public FirstPersonController Controller;
 
     public string key;
-
-    //public String[] Lines;
-
     public float textSpeed = 0.1f;
-
-    int index;
 
     void Start()
     {
@@ -28,6 +24,7 @@ public class DialogueScript : MonoBehaviour
         {
             StopAllCoroutines();
             dialogueText.text = LocalizationManager.Localize(key);
+            TextContinue.text = LocalizationManager.Localize("[MapDialogueContinue]");
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -40,8 +37,6 @@ public class DialogueScript : MonoBehaviour
 
     public void StartDialogue()
     {
-
-        index = 0;
         Time.timeScale = 0f;
         StartCoroutine(WriteLine());
         Controller.enabled = false;

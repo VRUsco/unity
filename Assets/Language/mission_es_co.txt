@@ -14,6 +14,7 @@
 [MenuNewGameTableName]=Nombre
 [MenuNewGameTableLastName]=Apellido
 [MenuNewGameTableGender]=Genero
+[MapDialogueContinue]=presione espacio para continuar
 [MapTitleBigMall]=Exito
 [MapTitleTheater]=TEATRO PINGOANZA
 [MapTitleHospital]=San francisco
