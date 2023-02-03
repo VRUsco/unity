@@ -9,8 +9,6 @@ public class Llegada : MonoBehaviour
     [SerializeField] private GameObject interfacePlayer;
     public SaveManager save;
 
-
-
     private void OnTriggerEnter(Collider obj)
     {
         interfacePlayer.SetActive(false);

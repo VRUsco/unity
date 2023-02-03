@@ -18,6 +18,7 @@ public class FillTable : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text gender;
     private user User;
     private static int UserId;
+    private static string resultString;
 
     public async Task searchAsync()
     {
@@ -41,15 +42,33 @@ public class FillTable : MonoBehaviour
         ButtonSearch.interactable = false;
     }
 
+    public static void GeneradorClave()
+    {
+        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var Charsarr = new char[4];
+        var random = new System.Random();
+
+        for (int i = 0; i < Charsarr.Length; i++)
+        {
+            Charsarr[i] = characters[random.Next(characters.Length)];
+        }
+        resultString = new String(Charsarr);
+
+
+    }
+
     public static void SaveNewTest(int auxiliar, int nivel, int grupo)
     {
         TestInfo Test = new TestInfo();
-
+        GeneradorClave();
         Test.fecha_hora = DateTime.Now;
         Test.auxiliar = auxiliar;
         Test.usuario = UserId;
         Test.nivel = nivel;
         Test.grupo = grupo;
+        Test.clave = resultString;
+
+        SaveManager.DatosPrueba(Test.fecha_hora, Test.nivel, Test.clave);
 
         var httpClient = new HttpClient();
 
@@ -71,6 +90,7 @@ public class FillTable : MonoBehaviour
     public class TestInfo
     {
         public DateTime fecha_hora;
+        public string clave;
         public int auxiliar;
         public int usuario;
         public int nivel;

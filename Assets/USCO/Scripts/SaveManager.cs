@@ -5,11 +5,12 @@ using System;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 public class SaveManager : MonoBehaviour
 {
     public string usuario = "Pedro Picapiedra";
-    public int errores = 0;
+    //public int errores = 0;
     private int TiempoEnIrseElMensaje = 3;
     [SerializeField] private TMP_Text erroresUI;
     [SerializeField] private TMP_Text timerText;
@@ -22,10 +23,23 @@ public class SaveManager : MonoBehaviour
     public string time;
     private int minutes, seconds, miliseconds;
     private string directionToSave = "Cll 0 con 0";
+    private static DateTime fechaInicio;
+    private static int nivel;
+    private static string clave;
+
+    private PruebaId pruebaIdLegada;
+    private int idPrueba;
+
+    private int idPruebaError;
+    private TipoErrorId TipoErrorIdLegada;
+
+    private void Start()
+    {
+        IdPruebaAsync();
+    }
 
     void Update()
     {
-
         timeElapsed += Time.deltaTime;
 
         timerText.text = getTime(timeElapsed);
@@ -40,60 +54,118 @@ public class SaveManager : MonoBehaviour
     public void SaveAppAsync()
     {
         ResultadoInfo player = new ResultadoInfo();
+        player.prueba = idPrueba;
+        player.nivel = nivel;
+        player.fecha_hora_inicio = fechaInicio;
+        player.fecha_hora_fin = DateTime.Now;
+        player.tiempo_ejecucion = time;
 
-        player.usuario = usuario;
-        player.errores = errores.ToString();
-        player.tiempo = time.ToString();
+
         /*player.direction = directionToSave;
         player.nivel = "1"; // TODO: make it responsive xD */
 
 
-        string playerInfoJson = JsonUtility.ToJson(player);
-        Debug.Log("Info a guardar: " + playerInfoJson);
+        //string playerInfoJson = JsonUtility.ToJson(player);
+        //Debug.Log("Info a guardar: " + playerInfoJson);
 
-        //string path = Path.Combine(Application.persistentDataPath, "playerData.data");
-        string path = Path.Combine("playerInfo", "playerData.data");
-        File.WriteAllText(path, playerInfoJson);
+        ////string path = Path.Combine(Application.persistentDataPath, "playerData.data");
+        //string path = Path.Combine("playerInfo", "playerData.data");
+        //File.WriteAllText(path, playerInfoJson);
 
         var httpClient = new HttpClient();
 
         var json = JsonConvert.SerializeObject(player);
         var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-        var url = "http://localhost:5000/usuario";
+        var url = "http://localhost:5000/resultados";
         httpClient.PostAsync(url, data);
 
-
         endOfLevelTiempo.text = time.ToString();
-        endOfLevelErrores.text = errores.ToString();
+        //endOfLevelErrores.text = errores.ToString();
         endOfLevel.SetActive(true);
+    }
+
+    public static void DatosPrueba(DateTime fecha_hora_inicio, int nivelLlegada, string claveLlegada)
+    {
+        fechaInicio = fecha_hora_inicio;
+        nivel = nivelLlegada;
+        clave = claveLlegada;
+    }
+
+    public async Task IdPruebaAsync()
+    {
+        var url2 = "http://localhost:5000/pruebaId:\'"+clave+"\'";
+        HttpClient client = new HttpClient();
+        var json = await client.GetStringAsync(url2);
+        json = json.Replace("[", "");
+        json = json.Replace("]", "");
+        pruebaIdLegada = JsonConvert.DeserializeObject<PruebaId>(json);
+        idPrueba = pruebaIdLegada.id;
     }
 
     public class ResultadoInfo
     {
-        public string usuario;
-        public string errores;
-        public string tiempo;
-        public string direction;
-        public string nivel;
+        public int prueba;
+        public int nivel;
+        public DateTime fecha_hora_inicio;
+        public DateTime fecha_hora_fin;
+        public string tiempo_ejecucion;
     }
 
-    public void IncreaseError(string whyerror)
+    public class PruebaId
     {
-        errores++;
+        public int id;
+    }
 
+    public void IncreaseError(string whyerror, DateTime fecha_horaLlegada)
+    {
+        PostError(fecha_horaLlegada);
         erroresUI.text = whyerror;
         Invoke("Cono", (200 * Time.deltaTime));
 
     }
+
     public void Cono()
     {
         erroresUI.text = "";
     }
-    private void DecreaseError()
+
+    public void PostError( DateTime fecha_hora)
     {
-        errores--;
-        erroresUI.text = errores.ToString();
+        ErrorInfo Error = new ErrorInfo();
+        Error.prueba = idPrueba;
+        Error.tipo_error = idPruebaError;
+        Error.fecha_hora = fecha_hora;
+
+        var httpClient = new HttpClient();
+        var json = JsonConvert.SerializeObject(Error);
+        var data = new StringContent(json, Encoding.UTF8, "application/json");
+        var url = "http://localhost:5000/error";
+        httpClient.PostAsync(url, data);
+    }
+
+    public class ErrorInfo
+    {
+        public int prueba;
+        public int tipo_error;
+        public DateTime fecha_hora;
+    }
+
+    public async Task IdTipoErrorAsync(string tipoError)//funcionando
+    {
+        var url2 = "http://localhost:5000/error:\'"+tipoError+"\'";
+        HttpClient client = new HttpClient();
+        var json = await client.GetStringAsync(url2);
+        json = json.Replace("[", "");
+        json = json.Replace("]", "");
+        TipoErrorIdLegada = JsonConvert.DeserializeObject<TipoErrorId>(json);
+        idPruebaError = TipoErrorIdLegada.id;
+        Debug.Log(idPruebaError);
+    }
+
+    public class TipoErrorId
+    {
+        public int id;
     }
 
     public void updateDirection(string direction)
