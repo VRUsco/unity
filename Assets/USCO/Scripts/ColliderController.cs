@@ -12,8 +12,8 @@ public class ColliderController : MonoBehaviour
         if (obj.tag == "PlayerController" && pointLightGreen.enabled == true)
         {
             DateTime fecha_hora = DateTime.Now;
-            await save.IdTipoErrorAsync("CPPI");
-            save.IncreaseError(LocalizationManager.Localize("[MapUiErrorCrosswalk]"), fecha_hora);
+            //await save.IdTipoErrorAsync("CPPI");
+           // save.IncreaseError(LocalizationManager.Localize("[MapUiErrorCrosswalk]"), fecha_hora);
         }
     }
 }
