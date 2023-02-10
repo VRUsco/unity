@@ -1,6 +1,7 @@
 [MenuPrincipalTitle]=Main panel
 [MainMenuButtonGame]=New Test
 [MainMenuButtonTrain]=Tutorial
+[MainMenuButtonExit]=Exit
 [MenuSettingTitle]=Options
 [MenuSettingVolume]=Volume
 [MenuSettingMute]=Mute
@@ -22,10 +23,12 @@
 [MapTitlebibliotecary]=library
 [MapTitleParking]=PARKING
 [MapTitleGasStation]=gas station
-[MapUiMision11]=Mission: Go to the hospital, Street 4 Career 3.
-[MapUiMision12]=Getting to the park, follow a path to get to the Natural Gas station.
-[MapUiMision13]=Starting at the entrance of the University Hospital, follow “Calle 4” until you reach the La Rosa store.
 [MapUiError]=Do not step on the street, be careful they run over you
 [MapUiErrorCrosswalk]=Do not use the crosswalk when the light is green for cars
 [MapUiDirectionStreet]=Street
 [MapUiDirectionCareer]=Career
+[MapUiMision11]=Mission: Go to the hospital, Street 4 Career 3.
+[MapUiMision12]=Getting to the park, follow a path to get to the Natural Gas station.
+[MapUiMision13]=Starting at the entrance of the University Hospital, follow “Calle 4” until you reach the La Rosa store.
+[MapUiMision131]=Test Message 1
+[MapUiMision132]=Test Message 2

@@ -75,6 +75,7 @@ public class MainPanel : MonoBehaviour
             }
         }
         FillTable.SaveNewTest(aux, nivel, group);
+        Debug.Log(LevelsDrop.captionText.text);
         GameManager.ChangeScene(LevelsDrop.captionText.text);
 
     }

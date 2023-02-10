@@ -1,6 +1,7 @@
 [MenuPrincipalTitle]=Panel Principal
 [MainMenuButtonGame]=Nueva Prueba
 [MainMenuButtonTrain]=Tutorial
+[MainMenuButtonExit]=Salir
 [MenuSettingTitle]=Opciones
 [MenuSettingVolume]=Volumen
 [MenuSettingMute]=Silenciado
@@ -17,7 +18,7 @@
 [MapDialogueContinue]=presione espacio para continuar
 [MapTitleBigMall]=Exito
 [MapTitleTheater]=TEATRO PINGOANZA
-[MapTitleHospital]=San francisco
+[MapTitleHospital]=Hospital San Francisco
 [MapTitleSamllMall]=YEP
 [MapTitlebibliotecary]=BIBLIOTECA
 [MapTitleParking]=PARQUEADERO
@@ -30,3 +31,5 @@
 [MapUiObjective11]=Ve al hospital, Carrera 3.
 [MapUiMision12]=Ubicándote en el parque, sigue un camino para llegar a la estación de Gas Natural. 
 [MapUiMision13]=Iniciando en la entrada del Hospital Universitario, sigue la “Calle 4” hasta llegar al almacén La Rosa.
+[MapUiMision131]=Prueba Mensaje 1
+[MapUiMision132]=Prueba Mensaje 2

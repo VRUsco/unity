@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 public class SaveManager : MonoBehaviour
 {
     public string usuario = "Pedro Picapiedra";
-    //public int errores = 0;
     private int TiempoEnIrseElMensaje = 3;
     [SerializeField] private TMP_Text erroresUI;
     [SerializeField] private TMP_Text timerText;
@@ -69,7 +68,6 @@ public class SaveManager : MonoBehaviour
         httpClient.PostAsync(url, data);
 
         endOfLevelTiempo.text = time.ToString();
-        //endOfLevelErrores.text = errores.ToString();
         endOfLevel.SetActive(true);
     }
 

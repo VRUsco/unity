@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Llegada : MonoBehaviour
 {
-    public Object cube;
     [SerializeField] private GameObject endScreen;
     [SerializeField] private GameObject interfacePlayer;
     public SaveManager save;
@@ -13,8 +12,6 @@ public class Llegada : MonoBehaviour
     {
         interfacePlayer.SetActive(false);
         GameManager.Instance.UpdatePause();
-        //GameManager.Instance.isEnd = true;
         save.SaveAppAsync();
-        
     }
 }
