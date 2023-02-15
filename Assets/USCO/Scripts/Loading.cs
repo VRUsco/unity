@@ -8,11 +8,11 @@ public class Loading : MonoBehaviour
 {
     private void Start()
     {
-        int nivelACargar = CargaNivel.siguienteNivel;
+        string nivelACargar = CargaNivel.siguienteNivel;
         StartCoroutine(IniciarCarga(nivelACargar));
     }
 
-    IEnumerator IniciarCarga(int nivel)
+    IEnumerator IniciarCarga(string nivel)
     {
         AsyncOperation operacion = SceneManager.LoadSceneAsync(nivel);
         operacion.allowSceneActivation = false;

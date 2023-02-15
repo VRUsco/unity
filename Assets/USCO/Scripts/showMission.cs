@@ -6,14 +6,11 @@ using TMPro;
 
 public class showMission : MonoBehaviour
 {
-    public int nMission = 1;
-    [SerializeField] public TMP_Text mision; 
+    public int Mission;
+    [SerializeField] public TMP_Text mision;
 
-    private string[] missions = {};
-
-private string[] directionMission = { "Cll2cr2", "Cll2cr2", "Cll2cr2" };
     void Start()
     {
-        mision.text = missions[nMission];
+       //mision.text = LocalizationManager.Localize("[MapUiMision"+Mission+"]");
     }
 }

@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public static class CargaNivel
 {
-    public static int siguienteNivel;
+    public static string siguienteNivel;
 
-    public static void NivelCarga(int nombre)
+    public static void NivelCarga(string nombre)
     {
         siguienteNivel = nombre;
         SceneManager.LoadScene("LoadScreen");
