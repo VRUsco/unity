@@ -18,6 +18,7 @@
 [MapDialogueContinue]=presione espacio para continuar
 [MapTitleBigMall]=Exito
 [MapTitleTheater]=TEATRO PINGOANZA
+[MapTitleGobernacion]=Gobernación
 [MapTitleHospital]=Hospital San Francisco
 [MapTitleSamllMall]=YEP
 [MapTitlebibliotecary]=BIBLIOTECA

@@ -18,6 +18,7 @@
 [MapDialogueContinue]=press space to continue
 [MapTitleBigMall]=Mall
 [MapTitleTheater]=Theater lucius
+[MapTitleGobernacion]=Government
 [MapTitleHospital]=San Gerardo
 [MapTitleSamllMall]=small Mall
 [MapTitlebibliotecary]=library

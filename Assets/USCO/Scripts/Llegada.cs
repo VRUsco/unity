@@ -10,8 +10,13 @@ public class Llegada : MonoBehaviour
 
     private void OnTriggerEnter(Collider obj)
     {
-        interfacePlayer.SetActive(false);
-        GameManager.Instance.UpdatePause();
-        save.SaveAppAsync();
+        if (obj.tag == "PlayerController")
+        {
+            Debug.Log("entra");
+            Debug.Log(obj);
+            interfacePlayer.SetActive(false);
+            GameManager.Instance.UpdatePause();
+            save.SaveAppAsync();
+        }
     }
 }

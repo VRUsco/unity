@@ -10,8 +10,12 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private DialogueScript dialogue;
     private void OnTriggerEnter(Collider obj)
     {
-        ActualCheckpoint.SetActive(false);
-        NextCheckpoint.SetActive(true);
-        dialogue.StartDialogueMovementCheckPoint(key);
+        if (obj.tag == "PlayerController")
+        {
+            ActualCheckpoint.SetActive(false);
+            NextCheckpoint.SetActive(true);
+            dialogue.StartDialogueMovementCheckPoint(key);
+
+        }
     }
 }
