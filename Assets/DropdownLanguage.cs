@@ -13,14 +13,10 @@ public class DropdownLanguage : MonoBehaviour
 
     private void Update()
     {
-        if(Drop.captionText.text == "Default")
+        if(Drop.captionText.text != "Default")
         {
-            var culture = System.Globalization.CultureInfo.CurrentCulture;
-            string language = culture.ToString().ToLower().Replace("-", "_");
-            Debug.Log(language);
-            LocalizationManager.FileRead(language);
+            OnMyButtonChange(Drop.captionText.text);
         }
-        else { OnMyButtonChange(Drop.captionText.text); }
         
     }
 

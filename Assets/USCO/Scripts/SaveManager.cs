@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 public class SaveManager : MonoBehaviour
 {
     public string usuario = "Pedro Picapiedra";
-    private int TiempoEnIrseElMensaje = 3;
+
     [SerializeField] private TMP_Text erroresUI;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private float timeElapsed;
@@ -20,6 +20,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] private TMP_Text endOfLevelErrores;
     [SerializeField] private TMP_Text endOfLevelTiempo;
     public string time;
+    public int errors;
     private int minutes, seconds, miliseconds;
     private string directionToSave = "Cll 0 con 0";
     private static DateTime fechaInicio;
@@ -68,6 +69,7 @@ public class SaveManager : MonoBehaviour
         httpClient.PostAsync(url, data);
 
         endOfLevelTiempo.text = time.ToString();
+        endOfLevelErrores.text = errors.ToString();
         endOfLevel.SetActive(true);
     }
 
@@ -106,12 +108,13 @@ public class SaveManager : MonoBehaviour
     public void IncreaseError(string whyerror, DateTime fecha_horaLlegada)
     {
         PostError(fecha_horaLlegada);
+        errors++;
         erroresUI.text = whyerror;
-        Invoke("Cono", (200 * Time.deltaTime));
+        Invoke("LimpiarMensaje", (200 * Time.deltaTime));
 
     }
 
-    public void Cono()
+    public void LimpiarMensaje()
     {
         erroresUI.text = "";
     }
