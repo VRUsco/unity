@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject interfacePlayer;
     [SerializeField] private TMP_Dropdown Dropdown; // wire this in Inspector
+    public AudioSource audioAmbiente;
 
     public static bool isPaused;
     public static bool isEnd = false;
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (isPaused)
                 ChangeScene("Home");
@@ -50,9 +51,16 @@ public class GameManager : MonoBehaviour
 
         isPaused = !isPaused;
         if (isPaused)
+        {
+            audioAmbiente.Pause();
             Time.timeScale = 0f;
+        }
         else
+        {
+            audioAmbiente.UnPause();
             Time.timeScale = 1f;
+        }
+          
     }
     private void ShowPausePanel()
     {

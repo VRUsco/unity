@@ -149,7 +149,6 @@ public class SaveManager : MonoBehaviour
         json = json.Replace("]", "");
         TipoErrorIdLegada = JsonConvert.DeserializeObject<TipoErrorId>(json);
         idPruebaError = TipoErrorIdLegada.id;
-        Debug.Log(idPruebaError);
     }
 
     public class TipoErrorId

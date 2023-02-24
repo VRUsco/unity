@@ -15,7 +15,10 @@ public class LocalizationManager : MonoBehaviour
     {
         var culture = System.Globalization.CultureInfo.CurrentCulture;
         string language = culture.ToString().ToLower().Replace("-", "_");
-        FileRead(language);
+        if (myData.Count == 0)
+        {
+            FileRead(language);
+        }
     }
 
     public static void ChangeLanguage()

@@ -21,7 +21,7 @@ public class DialogueScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) || dialogueText.text == LocalizationManager.Localize(key))
         {
             StopAllCoroutines();
             dialogueText.text = LocalizationManager.Localize(key);
@@ -68,7 +68,7 @@ public class DialogueScript : MonoBehaviour
     {
         dialoguePanel.SetActive(true);
         StartCoroutine(WriteLineCheckPoint(keyLlegada));
-        Invoke("LimpiarDialogue", (100 * Time.deltaTime));
+        //Invoke("LimpiarDialogue", (500 * Time.deltaTime));
     }
     IEnumerator WriteLineCheckPoint(string keyLlegada)
     {

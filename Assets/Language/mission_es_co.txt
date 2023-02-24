@@ -1,4 +1,3 @@
-[MenuPrincipalTitle]=Panel Principal
 [MainMenuButtonGame]=Nueva Prueba
 [MainMenuButtonTrain]=Tutorial
 [MainMenuButtonExit]=Salir
@@ -34,8 +33,15 @@
 [MapUiMision13]=Iniciando en la estación de gasolina, sigue la Calle 3ra hasta llegar a la Carrera 6ta y gire a la izquierda para llegar a la biblioteca.
 [MapUiMision131]=Ahora sigue por la Carrera 6ta hasta la Calle 2da y siguela hasta la Carrera 2da y gira a la izquierda para llegar al Hospital. 
 [MapUiMision132]=Para finalizar, dirigete a la gobernación, ubicada en la Calle 2da con Carrera 5ta.
-[MapUiTrain1]=Desplace el raton para mover la camara
-[MapUiTrain21]=para mover al personaje hacia adelante, utilice la tecla W 
-[MapUiTrain22]=para mover al personaje hacia atras, utilice la tecla S
-[MapUiTrain23]=para mover al personaje hacia la izquierda, utilice la tecla A
-[MapUiTrain24]=para mover al personaje hacia la derecha, utilice la tecla D
+[MapUiTrain1]=Para mover al personaje hacia adelante, utilice la tecla W 
+[MapUiTrain2]=Para mover al personaje hacia atras, utilice la tecla S
+[MapUiTrain3]=Para mover al personaje hacia la izquierda, utilice la tecla A
+[MapUiTrain4]=Para mover al personaje hacia la derecha, utilice la tecla D
+[MapUiTrain5]=Desplace el raton para mover la camara
+[MapUiTrain51]=Es importante que sepas que no es permitido andar por las avenidas ni cruzar cuando el semáforo no lo permita, eso marcará un error. (Presiona espacio para continuar)
+[MapUiTrain6]=Te encontrarás con niveles donde tienes que pasar por varios puntos, estos son amarillos y para avanzar debes tocarlos (puntos de control).
+[MapUiTrain7]=Para finalizar cualquier nivel debes ir al punto de llegada, parecido al del punto de control pero de color verde.
+[MapUiTrain8]=¡Felicidades! Completaste el tutorial.
+[MapUiEndLevelExit]=Para salir presiona ESPACIO.
+[MapUiEndLevelTitle]=Fin
+[MapUiEndLevelTutorialCongrats]=Felicitaciones, acabaste el tutorial.

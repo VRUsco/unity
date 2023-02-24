@@ -13,7 +13,9 @@ public class DialogueScriptMulti : MonoBehaviour
     [SerializeField] private GameObject ControllerS;
     [SerializeField] private GameObject ControllerA;
     [SerializeField] private GameObject ControllerD;
+    [SerializeField] private GameObject Checkpoint;
     [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private TMP_Text error;
     [SerializeField] private FirstPersonController Controller;
     [SerializeField] private string[] dialogueLines;
 
@@ -23,58 +25,84 @@ public class DialogueScriptMulti : MonoBehaviour
     [SerializeField] private float typingTime;
     private int lineIndex = 0;
 
+
     private void Start()
     {
+        
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
+        
         StartDialogue();
+
     }
 
     private void Update()
     {
         //ControllerButton();
-        float mouseX2 = Input.GetAxis("Mouse X");
-        float mouseY2 = Input.GetAxis("Mouse Y");
+        
 
         switch (lineIndex)
         {
             case 0:
-                if (mouseX != mouseX2 || mouseY != mouseY2)
-                {
-                    NextDialogueLine();
-                    ControllerMouse.SetActive(false);
-                    ControllerImage.SetActive(true);
-                    Time.timeScale = 1f;
-                }
-                break;
-            case 1:
                 if (Input.GetKeyUp(KeyCode.W))
                 {
                     ControllerW.SetActive(false);
                     NextDialogueLine();
                 }
                 break;
-            case 2:
+            case 1:
                 if (Input.GetKeyUp(KeyCode.S))
                 {
                     ControllerS.SetActive(false);
                     NextDialogueLine();
                 }
                 break;
-            case 3:
+            case 2:
                 if (Input.GetKeyUp(KeyCode.A))
                 {
                     ControllerA.SetActive(false);
                     NextDialogueLine();
                 }
                 break;
-            case 4:
+            case 3:
                 if (Input.GetKeyUp(KeyCode.D))
                 {
                     ControllerD.SetActive(false);
+                    
+                    NextDialogueLine();
+                    ControllerMouse.SetActive(true);
+                }
+                break;
+            case 4: 
+                //GameManager.Instance.UpdatePause();
+                float mouseX2 = Input.GetAxis("Mouse X");
+                float mouseY2 = Input.GetAxis("Mouse Y");
+                if (mouseX != mouseX2 || mouseY != mouseY2)
+                {
+                    NextDialogueLine();
+
+                    ControllerMouse.SetActive(false);
+                    ControllerImage.SetActive(true);
+                    error.text = "ERROR";
+                    
+                    Time.timeScale = 1f;
+                }
+                break;
+            case 5:
+                if (Input.GetKeyUp(KeyCode.Space))
+                {
+                    Checkpoint.SetActive(true);
+                    error.text = "";
                     NextDialogueLine();
                 }
                 break;
+            case 6:
+                
+                break;
+            case 7:
+                
+                break;
+
             default:
                 if (!ControllerW.activeSelf && !ControllerA.activeSelf && !ControllerS.activeSelf && !ControllerD.activeSelf)
                 {
@@ -91,8 +119,9 @@ public class DialogueScriptMulti : MonoBehaviour
         StartCoroutine(ShowLine());
     }
 
-    private void NextDialogueLine()
+    public void NextDialogueLine()
     {
+
         lineIndex++;
         if(lineIndex < dialogueLines.Length)
         {
@@ -115,7 +144,7 @@ public class DialogueScriptMulti : MonoBehaviour
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(0.005f);
         }
-    }
+}
 
     private void ControllerButton()
     {
