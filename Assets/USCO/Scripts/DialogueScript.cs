@@ -68,7 +68,7 @@ public class DialogueScript : MonoBehaviour
     {
         dialoguePanel.SetActive(true);
         StartCoroutine(WriteLineCheckPoint(keyLlegada));
-        //Invoke("LimpiarDialogue", (500 * Time.deltaTime));
+        Invoke("LimpiarDialogue", (500 * Time.deltaTime));
     }
     IEnumerator WriteLineCheckPoint(string keyLlegada)
     {
