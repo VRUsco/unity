@@ -36,9 +36,11 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (isPaused)
-                //UpdatePause();
+            if (isPaused) {
                 ChangeScene("Home");
+                Time.timeScale = 1f;
+            }
+                
         }
     }
 

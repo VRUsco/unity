@@ -20,6 +20,7 @@ public class MainPanel : MonoBehaviour
     private int aux;
     private int nivel;
     private int group;
+    public static bool isPaused;
 
     private void Start()
     {

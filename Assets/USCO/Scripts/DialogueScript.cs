@@ -10,6 +10,7 @@ public class DialogueScript : MonoBehaviour
     public TextMeshProUGUI TextContinue;
     public FirstPersonController Controller;
     [SerializeField] private GameObject dialoguePanel;
+    [SerializeField] private AudioSource AudioPanel;
 
     public string key;
     public float textSpeed = 0.5f;
@@ -41,6 +42,7 @@ public class DialogueScript : MonoBehaviour
         Time.timeScale = 0f;
         StartCoroutine(WriteLine());
         Controller.enabled = false;
+        AudioPanel.PlayOneShot(LocalizationManager.LocalizeAudio(key));
     }
     public void StartDialogueMovement()
     {
@@ -52,6 +54,7 @@ public class DialogueScript : MonoBehaviour
     void LimpiarDialogue(){
         dialogueText.text = "";
         dialoguePanel.SetActive(false);
+        AudioPanel.Stop();
     }
 
     IEnumerator WriteLine()
@@ -68,6 +71,7 @@ public class DialogueScript : MonoBehaviour
     {
         dialoguePanel.SetActive(true);
         StartCoroutine(WriteLineCheckPoint(keyLlegada));
+        AudioPanel.PlayOneShot(LocalizationManager.LocalizeAudio(keyLlegada));
         Invoke("LimpiarDialogue", (500 * Time.deltaTime));
     }
     IEnumerator WriteLineCheckPoint(string keyLlegada)

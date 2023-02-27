@@ -7,7 +7,7 @@ public class Checkpoint : MonoBehaviour
     public string key;
     [SerializeField] private GameObject ActualCheckpoint;
     [SerializeField] private GameObject NextCheckpoint;
-    [SerializeField] private DialogueScript dialogue;
+    [SerializeField] private DialogueScriptMulti dialogue;
     public AudioSource audioLlegada;
     private void OnTriggerEnter(Collider obj)
     {

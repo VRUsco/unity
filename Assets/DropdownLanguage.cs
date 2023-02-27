@@ -5,6 +5,7 @@ using UnityEngine;
 public class DropdownLanguage : MonoBehaviour
 {
     public TMPro.TMP_Dropdown Drop;
+    LocalizationManager localManager = new LocalizationManager();
 
     void Awake()
     {
@@ -40,5 +41,6 @@ public class DropdownLanguage : MonoBehaviour
     {
         LocalizationManager.ChangeLanguage();
         LocalizationManager.FileRead(text);
+        localManager.GetSongsFromFolder(text);
     }
 }

@@ -18,6 +18,7 @@ public class DialogueScriptMulti : MonoBehaviour
     [SerializeField] private TMP_Text error;
     [SerializeField] private FirstPersonController Controller;
     [SerializeField] private string[] dialogueLines;
+    [SerializeField] private AudioSource AudioPanel;
 
     float mouseX;
     float mouseY;
@@ -28,18 +29,14 @@ public class DialogueScriptMulti : MonoBehaviour
 
     private void Start()
     {
-        
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
         
         StartDialogue();
-
     }
 
     private void Update()
     {
-        //ControllerButton();
-        
 
         switch (lineIndex)
         {
@@ -47,6 +44,7 @@ public class DialogueScriptMulti : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.W))
                 {
                     ControllerW.SetActive(false);
+                    AudioPanel.Stop();
                     NextDialogueLine();
                 }
                 break;
@@ -54,6 +52,7 @@ public class DialogueScriptMulti : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.S))
                 {
                     ControllerS.SetActive(false);
+                    AudioPanel.Stop();
                     NextDialogueLine();
                 }
                 break;
@@ -61,6 +60,7 @@ public class DialogueScriptMulti : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.A))
                 {
                     ControllerA.SetActive(false);
+                    AudioPanel.Stop();
                     NextDialogueLine();
                 }
                 break;
@@ -68,7 +68,7 @@ public class DialogueScriptMulti : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.D))
                 {
                     ControllerD.SetActive(false);
-                    
+                    AudioPanel.Stop();
                     NextDialogueLine();
                     ControllerMouse.SetActive(true);
                 }
@@ -79,8 +79,8 @@ public class DialogueScriptMulti : MonoBehaviour
                 float mouseY2 = Input.GetAxis("Mouse Y");
                 if (mouseX != mouseX2 || mouseY != mouseY2)
                 {
+                    AudioPanel.Stop();
                     NextDialogueLine();
-
                     ControllerMouse.SetActive(false);
                     ControllerImage.SetActive(true);
                     error.text = "ERROR";
@@ -93,20 +93,20 @@ public class DialogueScriptMulti : MonoBehaviour
                 {
                     Checkpoint.SetActive(true);
                     error.text = "";
+                    AudioPanel.Stop();
                     NextDialogueLine();
                 }
                 break;
             case 6:
-                
                 break;
             case 7:
-                
                 break;
 
             default:
                 if (!ControllerW.activeSelf && !ControllerA.activeSelf && !ControllerS.activeSelf && !ControllerD.activeSelf)
                 {
                     ControllerImage.SetActive(false);
+                    AudioPanel.Stop();
                     NextDialogueLine();
                 }
                 break;
@@ -121,7 +121,6 @@ public class DialogueScriptMulti : MonoBehaviour
 
     public void NextDialogueLine()
     {
-
         lineIndex++;
         if(lineIndex < dialogueLines.Length)
         {
@@ -138,35 +137,34 @@ public class DialogueScriptMulti : MonoBehaviour
     private IEnumerator ShowLine()
     {
         dialogueText.text = string.Empty;
-
-        foreach(char ch in LocalizationManager.Localize(dialogueLines[lineIndex]))
+        AudioPanel.PlayOneShot(LocalizationManager.LocalizeAudio(dialogueLines[lineIndex]));
+        foreach (char ch in LocalizationManager.Localize(dialogueLines[lineIndex]))
         {
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(0.005f);
         }
-}
-
-    private void ControllerButton()
+    }
+    void LimpiarDialogue()
     {
-        if (ControllerW.activeSelf || ControllerA.activeSelf || ControllerS.activeSelf || ControllerD.activeSelf)
+        dialogueText.text = "";
+        dialoguePanel.SetActive(false);
+        AudioPanel.Stop();
+    }
+    public void StartDialogueMovementCheckPoint(string keyLlegada)
+    {
+        LimpiarDialogue();
+        dialoguePanel.SetActive(true);
+        StartCoroutine(WriteLineCheckPoint(keyLlegada));
+        AudioPanel.PlayOneShot(LocalizationManager.LocalizeAudio(keyLlegada));
+       
+    }
+    IEnumerator WriteLineCheckPoint(string keyLlegada)
+    {
+        string Line = LocalizationManager.Localize(keyLlegada);
+        foreach (char letter in Line.ToCharArray())
         {
-            if (Input.GetKeyUp(KeyCode.W))
-            {
-                ControllerW.SetActive(false);
-            }
-            else if (Input.GetKeyUp(KeyCode.A))
-            {
-                ControllerA.SetActive(false);
-            }
-            else if (Input.GetKeyUp(KeyCode.S))
-            {
-                ControllerS.SetActive(false);
-            }
-            else if (Input.GetKeyUp(KeyCode.D))
-            {
-                ControllerD.SetActive(false);
-            }
+            dialogueText.text += letter;
+            yield return new WaitForSecondsRealtime(0.005f);
         }
-        
     }
 }
