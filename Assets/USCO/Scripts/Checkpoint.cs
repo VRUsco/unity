@@ -7,7 +7,8 @@ public class Checkpoint : MonoBehaviour
     public string key;
     [SerializeField] private GameObject ActualCheckpoint;
     [SerializeField] private GameObject NextCheckpoint;
-    [SerializeField] private DialogueScriptMulti dialogue;
+    [SerializeField] private DialogueScript dialogue;
+    [SerializeField] private DialogueScriptMulti dialogueMulti;
     public AudioSource audioLlegada;
     private void OnTriggerEnter(Collider obj)
     {
@@ -16,7 +17,15 @@ public class Checkpoint : MonoBehaviour
             audioLlegada.Play();
             ActualCheckpoint.SetActive(false);
             NextCheckpoint.SetActive(true);
-            dialogue.StartDialogueMovementCheckPoint(key);
+            if (dialogue)
+            {
+                dialogue.StartDialogueMovementCheckPoint(key);
+            }
+            else
+            {
+                dialogueMulti.StartDialogueMovementCheckPoint(key);
+            }
+            
         }
     }
 }

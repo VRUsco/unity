@@ -23,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/USCO/Scenes/Tutorial.unity
     guid: 7106a875469e3524f8625528858c59ea
-  - enabled: 0
-    path: Assets/USCO/Scenes/Train.unity
-    guid: c7e5d7f7ef47d834b85b6fb3c5757220
   m_configObjects:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 64da53edcdc76d645bb1ca4380299349, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 483cee09ce706ff4e97dc223d9b07576, type: 2}

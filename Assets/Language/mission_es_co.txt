@@ -30,9 +30,9 @@
 [MapUiMision11]=Empezando en la entrada del Teatro Pigoanza, sigue alguna de las dos rutas alternas para llegar al almacén Éxito.
 [MapUiObjective11]=Ve al hospital, Carrera 3.
 [MapUiMision12]=Estando en la gobernación, consigue llegar a la estación de gasolina Terpel en la Carrera 2da con Calle 3ra. 
-[MapUiMision13]=Iniciando en la estación de gasolina, sigue la Calle 3ra hasta llegar a la Carrera 6ta y gire a la izquierda para llegar a la biblioteca.
+[MapUiMision13]=Iniciando en la estación de gasolina, sigue la Calle 3ra hasta llegar a la Carrera 6ta y gira a la izquierda para llegar a la biblioteca.
 [MapUiMision131]=Ahora sigue por la Carrera 6ta hasta la Calle 2da y siguela hasta la Carrera 2da y gira a la izquierda para llegar al Hospital. 
-[MapUiMision132]=Para finalizar, dirigete a la gobernación, ubicada en la Calle 2da con Carrera 5ta.
+[MapUiMision132]=Para finalizar, dirígete a la gobernación, ubicada en la Calle 2da con Carrera 5ta.
 [MapUiTrain1]=Para mover al personaje hacia adelante, utilice la tecla W 
 [MapUiTrain2]=Para mover al personaje hacia atras, utilice la tecla S
 [MapUiTrain3]=Para mover al personaje hacia la izquierda, utilice la tecla A
@@ -45,3 +45,4 @@
 [MapUiEndLevelExit]=Para salir presiona ESPACIO.
 [MapUiEndLevelTitle]=Fin
 [MapUiEndLevelTutorialCongrats]=Felicitaciones, acabaste el tutorial.
+[MapUiPause]=Pausa

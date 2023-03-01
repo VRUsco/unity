@@ -137,12 +137,12 @@ public class DialogueScriptMulti : MonoBehaviour
     private IEnumerator ShowLine()
     {
         dialogueText.text = string.Empty;
-        AudioPanel.PlayOneShot(LocalizationManager.LocalizeAudio(dialogueLines[lineIndex]));
         foreach (char ch in LocalizationManager.Localize(dialogueLines[lineIndex]))
         {
             dialogueText.text += ch;
             yield return new WaitForSecondsRealtime(0.005f);
         }
+        AudioPanel.PlayOneShot(LocalizationManager.LocalizeAudio(dialogueLines[lineIndex]));
     }
     void LimpiarDialogue()
     {

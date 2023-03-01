@@ -13832,7 +13832,8 @@ MonoBehaviour:
   key: '[MapUiTrain7]'
   ActualCheckpoint: {fileID: 1999452860}
   NextCheckpoint: {fileID: 1323454726}
-  dialogue: {fileID: 1298208442}
+  dialogue: {fileID: 0}
+  dialogueMulti: {fileID: 1298208442}
   audioLlegada: {fileID: 1467154236}
 --- !u!65 &1999452863
 BoxCollider:
