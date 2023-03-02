@@ -69,6 +69,7 @@ public class DialogueScript : MonoBehaviour
 
     public void StartDialogueMovementCheckPoint(string keyLlegada)
     {
+        key = keyLlegada;
         dialoguePanel.SetActive(true);
         StartCoroutine(WriteLineCheckPoint(keyLlegada));
         AudioPanel.PlayOneShot(LocalizationManager.LocalizeAudio(keyLlegada));

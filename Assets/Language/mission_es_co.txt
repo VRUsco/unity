@@ -46,3 +46,5 @@
 [MapUiEndLevelTitle]=Fin
 [MapUiEndLevelTutorialCongrats]=Felicitaciones, acabaste el tutorial.
 [MapUiPause]=Pausa
+[MapUiURHere]=Usted está aquí
+[MapUiUShouldComeHere]=Debe venir aquí
